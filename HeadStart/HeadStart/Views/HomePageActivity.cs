@@ -31,10 +31,13 @@ namespace HeadStart
             var warningsContainer = FindViewById<LinearLayout>(Resource.Id.WarningsContainer);
             var articlesContainer = FindViewById<LinearLayout>(Resource.Id.ArticlesContainer);
 
+            // Get the containers for the bottom navigation
+            
+
             // Add the navigation click events for the containers
             milestonesContainer.Click += delegate
             {
-                StartActivity(typeof(TestNavActivity));
+                StartActivity(typeof(MilestonesActivity));
             };
 
             warningsContainer.Click += delegate
@@ -46,6 +49,8 @@ namespace HeadStart
             {
                 StartActivity(typeof(ArticlesActivity));
             };
+
+            
         }
     }
 }

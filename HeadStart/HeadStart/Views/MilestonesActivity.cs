@@ -55,7 +55,7 @@ namespace HeadStart.Views
             // Add adapter for year one list view
             yearOneListView = FindViewById<ListView>(Resource.Id.YearOldList);
             ArrayAdapter<string> yearOneAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, oneYearCategories);
-            firstYearListView.Adapter = yearOneAdapter;
+            yearOneListView.Adapter = yearOneAdapter;
         }
     }
 }
