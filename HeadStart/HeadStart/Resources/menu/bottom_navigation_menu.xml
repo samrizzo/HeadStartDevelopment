@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+    android:id="@+id/HomeNavigation"
+    android:icon="@drawable/home"
+    android:title="HOME"
+    android:textSize="20dp"/>
+
+  <item
+    android:id="@+id/HistoryNavigation"
+    android:icon="@drawable/history"
+    android:title="HISTORY"
+    android:textSize="20dp"/>
+
+  <item
+    android:id="@+id/FavouritesNavigation"
+    android:icon="@drawable/favourites"
+    android:title="FAVOURITES"
+    android:textSize="20dp"/>
+  
+</menu>

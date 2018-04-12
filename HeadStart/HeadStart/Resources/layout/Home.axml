@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/MainLayout">
+    <RelativeLayout
+        android:orientation="vertical"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/HomeContainer">
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/NavigationContainer">
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="440dp"
+                android:minHeight="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/MilestonesContainer"
+     
+                android:background="@drawable/dialog_holo_light_frame"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center">
+                <ImageView
+                    android:src="@drawable/milestones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/MilestonesImage"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="10dp" />
+                <TextView
+                    android:text="Milestone Checklist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/MilestonesText"
+                    android:textSize="25dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="440dp"
+                android:minHeight="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/WarningsContainer"
+                android:layout_marginTop="25dp"
+                android:background="#A14732"
+                android:layout_gravity="center">
+                <ImageView
+                    android:src="@drawable/warnings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/WarningsImage"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="10dp" />
+                <TextView
+                    android:text="Warning Signs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/WarningsText"
+                    android:textSize="25dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="440dp"
+                android:minHeight="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ArticlesContainer"
+                android:layout_marginTop="25dp"
+                android:background="#A13B4D"
+                android:layout_gravity="center">
+                <ImageView
+                    android:src="@drawable/articles"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ArticlesImage"
+                    android:layout_marginTop="40dp" />
+                <TextView
+                    android:text="Helpful Articles"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ArticlesText"
+                    android:textSize="25dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_alignParentBottom="true">
+        <android.support.design.widget.BottomNavigationView
+            android:minWidth="70dp"
+            android:minHeight="70dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/BottomNavigation"
+            android:background="@color/colorPrimary"
+            app:itemBackground="@color/colorPrimary"
+            app:itemTextColor="#FFFFFF"
+            app:theme="@style/Theme.AppCompat.Light"
+            app:menu="@menu/bottom_navigation_menu"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="-5dp" />
+    </RelativeLayout>
+</RelativeLayout>
