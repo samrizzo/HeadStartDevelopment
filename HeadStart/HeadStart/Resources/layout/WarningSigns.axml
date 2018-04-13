@@ -1,7 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
     android:layout_height="match_parent">
-
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/Theme.AppCompat"
+        app:layout_scrollFlags="scroll|enterAlways" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_alignParentBottom="true">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/WarningSignsContentContainer">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="300dp"
+                        android:minHeight="150dp"
+                        android:id="@+id/WarningSignsTextContainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="#A14732"
+                        android:layout_marginTop="10dp"
+                        android:padding="20dp">
+                        <TextView
+                            android:text="Please consult your family doctor if your child exhibits some or all of these signs by the suggested developmental ages."
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/WarningSignsText"
+                            android:textSize="25dp"
+                            android:layout_gravity="center"
+                            android:maxWidth="400dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:id="@+id/WarningsContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:text="Warning Signs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/WarningListText"
+                            android:textSize="25dp"
+                            android:layout_marginLeft="13dp"
+                            android:layout_gravity="center" />
+                        <ListView
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/WarningSignsList"
+                            android:layout_marginBottom="20dp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <android.support.design.widget.BottomNavigationView
+                    android:minWidth="70dp"
+                    android:minHeight="70dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/BottomNavigation"
+                    android:background="@color/colorPrimary"
+                    app:itemBackground="@color/colorPrimary"
+                    app:itemTextColor="#FFFFFF"
+                    app:theme="@style/Theme.AppCompat.Light"
+                    app:menu="@menu/bottom_navigation_menu"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="-5dp" />
+            </RelativeLayout>
+            <android.support.design.widget.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_height="match_parent"
+                android:layout_width="300dp"
+                android:layout_gravity="start"
+                android:fitsSystemWindows="true"
+                app:menu="@menu/nav_menu" />
+        </android.support.v4.widget.DrawerLayout>
+    </LinearLayout>
 </LinearLayout>

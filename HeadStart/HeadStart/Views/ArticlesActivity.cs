@@ -7,24 +7,54 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
+using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 
 namespace HeadStart.Views
 {
-    [Activity(Label = "ArticlesActivity")]
-    public class ArticlesActivity : Activity
+    [Activity(Label = "ArticlesActivity", Theme = "@style/Theme.AppCompat.NoActionBar")]
+    public class ArticlesActivity : AppCompatActivity
     {
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
-            ActionBar.Hide();
-
-            // Create your application here
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Articles);
+
+            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            SetSupportActionBar(toolbar);
+
+            //Enable support action bar to display hamburger
+            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
+            navigationView.NavigationItemSelected += (sender, e) =>
+            {
+                e.MenuItem.SetChecked(true);
+                //react to click here and swap fragments or navigate
+                drawerLayout.CloseDrawers();
+            };
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
+                    return true;
+
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

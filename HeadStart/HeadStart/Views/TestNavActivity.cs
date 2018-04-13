@@ -15,7 +15,7 @@ using Android.Support.Design.Widget;
 
 namespace HeadStart.Views
 {
-    [Activity(Label = "TestNavActivity", Theme ="@style/Theme.AppCompat.Light.NoActionBar")]
+    [Activity(Label = "TestNavActivity", Theme ="@style/Theme.AppCompat.NoActionBar")]
     public class TestNavActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
@@ -30,12 +30,19 @@ namespace HeadStart.Views
 
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowTitleEnabled(false);
-            SupportActionBar.SetHomeButtonEnabled(true);
+
+            //Enable support action bar to display hamburger
             SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
+            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
+            navigationView.NavigationItemSelected += (sender, e) => {
+                e.MenuItem.SetChecked(true);
+                //react to click here and swap fragments or navigate
+                drawerLayout.CloseDrawers();
+            };
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
