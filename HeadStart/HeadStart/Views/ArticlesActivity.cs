@@ -15,7 +15,7 @@ using Android.Widget;
 
 namespace HeadStart.Views
 {
-    [Activity(Label = "ArticlesActivity", Theme = "@style/Theme.AppCompat.NoActionBar")]
+    [Activity(Label = "Helpful Tips", Theme = "@style/MainTheme")]
     public class ArticlesActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
@@ -29,32 +29,49 @@ namespace HeadStart.Views
 
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
-
-            //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            // Get the bottom navigation
+            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.BottomNavigation);
 
-            navigationView.NavigationItemSelected += (sender, e) =>
-            {
-                e.MenuItem.SetChecked(true);
-                //react to click here and swap fragments or navigate
-                drawerLayout.CloseDrawers();
-            };
+            // Add the navigation click events for the bottom navigation
+            bottomNavigation.SelectedItemId = Resource.Id.ArticlesNavigation;
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
-                    return true;
 
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                StartActivity(typeof(HomePageActivity));
+                return true;
             }
+
             return base.OnOptionsItemSelected(item);
+        }
+
+        void LoadFragment(int id)
+        {
+            if (id == Resource.Id.HomeNavigation)
+            {
+                StartActivity(typeof(HomePageActivity));
+            }
+
+            else if (id == Resource.Id.MilestonesNavigation)
+            {
+                StartActivity(typeof(MilestonesActivity));
+            }
+
+            else if (id == Resource.Id.WarningsNavigation)
+            {
+                StartActivity(typeof(WarningSignsActivity));
+            }
+        }
+
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
         }
     }
 }

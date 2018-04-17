@@ -16,7 +16,7 @@ using HeadStart.Views;
 
 namespace HeadStart.Views
 {
-    [Activity(Label = "MilestonesActivity", Theme = "@style/Theme.AppCompat.NoActionBar")]
+    [Activity(Label = "Milestone Checklist", Theme = "@style/MainTheme")]
     public class MilestonesActivity : AppCompatActivity
     {
         List<string> firstYearCategories;
@@ -38,12 +38,13 @@ namespace HeadStart.Views
 
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowTitleEnabled(false);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            // Get the bottom navigation
+            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.BottomNavigation);
+
+            // Add the navigation click events for the bottom navigation
+            bottomNavigation.SelectedItemId = Resource.Id.MilestonesNavigation;
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
             firstYearCategories = new List<string>()
             {
@@ -72,13 +73,37 @@ namespace HeadStart.Views
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
+
+            if (item.ItemId == Android.Resource.Id.Home)
             {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
-                    return true;
+                StartActivity(typeof(HomePageActivity));
+                return true;
             }
+
             return base.OnOptionsItemSelected(item);
+        }
+
+        void LoadFragment(int id)
+        {
+            if (id == Resource.Id.HomeNavigation)
+            {
+                StartActivity(typeof(HomePageActivity));
+            }
+
+            else if (id == Resource.Id.WarningsNavigation)
+            {
+                StartActivity(typeof(WarningSignsActivity));
+            }
+
+            else if (id == Resource.Id.ArticlesNavigation)
+            {
+                StartActivity(typeof(ArticlesActivity));
+            }
+        }
+
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
         }
     }
 }

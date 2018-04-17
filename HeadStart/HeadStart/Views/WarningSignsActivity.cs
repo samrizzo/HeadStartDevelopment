@@ -14,7 +14,7 @@ using Android.Widget;
 
 namespace HeadStart.Views
 {
-    [Activity(Label = "WarningSignsActivity", Theme = "@style/Theme.AppCompat.NoActionBar")]
+    [Activity(Label = "Warning Signs", Theme = "@style/MainTheme")]
     public class WarningSignsActivity : AppCompatActivity
     {
         List<string> warningSigns;
@@ -33,12 +33,13 @@ namespace HeadStart.Views
 
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-            SupportActionBar.SetDisplayShowTitleEnabled(false);
-            SupportActionBar.SetHomeButtonEnabled(true);
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            // Get the bottom navigation
+            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.BottomNavigation);
+
+            // Add the navigation click events for the bottom navigation
+            bottomNavigation.SelectedItemId = Resource.Id.WarningsNavigation;
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
             warningSigns = new List<string>()
             {
@@ -69,6 +70,41 @@ namespace HeadStart.Views
             warningSignsList = FindViewById<ListView>(Resource.Id.WarningSignsList);
             ArrayAdapter<string> warningSignsAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, warningSigns);
             warningSignsList.Adapter = warningSignsAdapter;
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                StartActivity(typeof(HomePageActivity));
+                return true;
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
+
+        void LoadFragment(int id)
+        {
+            if (id == Resource.Id.HomeNavigation)
+            {
+                StartActivity(typeof(HomePageActivity));
+            }
+
+            else if (id == Resource.Id.MilestonesNavigation)
+            {
+                StartActivity(typeof(MilestonesActivity));
+            }
+
+            else if (id == Resource.Id.ArticlesNavigation)
+            {
+                StartActivity(typeof(ArticlesActivity));
+            }
+        }
+
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
         }
     }
 }

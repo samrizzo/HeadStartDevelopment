@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using Android;
 using Android.App;
 using Android.Content;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -16,7 +18,7 @@ using HeadStart.Views;
 
 namespace HeadStart
 {
-    [Activity(Label = "HomePageActivity", Theme = "@style/MainTheme")]
+    [Activity(Label = "Home", Theme = "@style/MainTheme")]
     public class HomePageActivity : AppCompatActivity
     {
         DrawerLayout drawerLayout;
@@ -26,8 +28,6 @@ namespace HeadStart
         {
             base.OnCreate(savedInstanceState);
 
-            // Create your application here
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Home);
 
             // Get the layout container for each section
@@ -35,22 +35,16 @@ namespace HeadStart
             var warningsContainer = FindViewById<LinearLayout>(Resource.Id.WarningsContainer);
             var articlesContainer = FindViewById<LinearLayout>(Resource.Id.ArticlesContainer);
 
+            // Get the toolbar and set it as a support actionbar
             var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
             SetSupportActionBar(toolbar);
 
-            //Enable support action bar to display hamburger
-            SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.menu);
-            SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            // Get the bottom navigation
+            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.BottomNavigation);
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-
-            navigationView.NavigationItemSelected += (sender, e) => {
-                e.MenuItem.SetChecked(true);
-                //react to click here and swap fragments or navigate
-                drawerLayout.CloseDrawers();
-            };
-
+            // Add the navigation click events for the bottom navigation
+            bottomNavigation.SelectedItemId = Resource.Id.HomeNavigation;
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
             // Add the navigation click events for the containers
             milestonesContainer.Click += delegate
@@ -66,19 +60,42 @@ namespace HeadStart
             articlesContainer.Click += delegate
             {
                 StartActivity(typeof(ArticlesActivity));
-            };      
+            };
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
-            {
-                case Android.Resource.Id.Home:
-                    drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
-                    return true;
 
+            if (item.ItemId == Android.Resource.Id.Home)
+            {
+                StartActivity(typeof(HomePageActivity));
+                return true;
             }
+
             return base.OnOptionsItemSelected(item);
+        }
+
+        void LoadFragment(int id)
+        {
+            if (id == Resource.Id.MilestonesNavigation)
+            {
+                StartActivity(typeof(MilestonesActivity));
+            }
+
+            else if (id == Resource.Id.WarningsNavigation)
+            {
+                StartActivity(typeof(WarningSignsActivity));
+            }
+
+            else if (id == Resource.Id.ArticlesNavigation)
+            {
+                StartActivity(typeof(ArticlesActivity));
+            }
+        }
+
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
         }
     }
 }

@@ -1,4 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">HeadStart</string>
+  
+  <!-- Article 1 - Bedtime Routines -->
+  <string name="article1_text">
+We don’t believe in “bedtime.” Instead, we recommend “bedroom time.” Since we can’t force our children to sleep, and it requires far too much energy to keep them in their beds, we suggest that parents simply expect their children to be in their rooms at a certain time each evening. Here are some additional tips:
+
+    - Create calming rituals before bedroom time. This means that you and your kids always have dinner, have a bath, read a story, etc. in more of less the same order each evening. This predictability is calming and comforting to kids.
+    
+    - When bedroom time arrives, say, “It’s bedroom time. You may do whatever you want in your rooms as long as you don’t cause a problem for anybody else in the house.”
+    
+    - Set a time when everyone wakes up in the morning, no matter what time they go to sleep. If, in the morning, they are tired from lack of sleep, offer empathy and sadness, “That’s so sad that you are tired. It’s going to be a long day. That happens to me when I stay up too late, too.” Send them off to school, take them on a boring shopping trip, etc… and let the consequence do the teaching.
+  </string>
+  
+  <!-- Article 2 - Potting Training -->
+  <string name="article2_text">
+Potty training doesn’t have to be a frustrating experience for either you or your child. The most important things to remember are:
+
+    - Little children copy what they see their parents doing. That’s why it’s so important to let your tots see you using the potty…and having a good time doing so. (While this may be a bit embarrassing for some, the results are well worth the discomfort.)
+    
+    - Offer lots of choices.  For example “Do you want to use the upstairs potty or downstairs potty?” “Do you want to bring your favorite toy or leave it in your room?” The more small choices we give, the less resistant our kids will be.
+    
+    - Remain calm and empathetic when accidents happen. Punishment never works when it comes to potty training.
+    
+    - Allow your child to train at their own pace. Some kids are ready before they are two years old, others aren’t ready until they are around four. When we try to force the issue before our children are ready, frustration is all we will achieve.
+  </string>
+  
+  <!-- Article 3 - Eating Problems -->
+  <string name="article3_text">
+Just about every child displays at least some finicky, resistant behavior when it comes to eating certain foods. Here are some quick tips for handling this in an effective way:
+
+    - Remember that you can’t force your child to eat something they don’t want to. If you try, you’ll end up in an un-winnable power-struggle and run the risk of giving your child some long-term, unhealthy beliefs about eating.
+    
+    - Follow “Grandma’s Rule”: “You may have more of what you like as soon as I see that you’ve finished a bit of what you don’t like.”
+    
+    - Hope that your child experiments with going on a hunger strike. If they refuse to each what is served, say, “Maybe you will like what’s served for breakfast better.” Most kids need to experiment with going hungry before they realize that it’s smart to eat what is served.
+    
+    - Model good eating habits. Keep healthy foods in your home, and let your kids see you enjoying them.
+  </string>
+  
 </resources>

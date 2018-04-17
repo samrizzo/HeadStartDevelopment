@@ -109,7 +109,7 @@
                             android:id="@+id/ArticlesImage"
                             android:layout_marginTop="40dp" />
                         <TextView
-                            android:text="Helpful Articles"
+                            android:text="Helpful Tips"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/ArticlesText"

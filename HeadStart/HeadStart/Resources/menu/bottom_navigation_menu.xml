@@ -9,15 +9,21 @@
     android:textSize="20dp"/>
 
   <item
-    android:id="@+id/HistoryNavigation"
-    android:icon="@drawable/history"
-    android:title="HISTORY"
+    android:id="@+id/MilestonesNavigation"
+    android:icon="@drawable/milestones"
+    android:title="MILESTONES"
     android:textSize="20dp"/>
 
   <item
-    android:id="@+id/FavouritesNavigation"
-    android:icon="@drawable/favourites"
-    android:title="FAVOURITES"
+    android:id="@+id/WarningsNavigation"
+    android:icon="@drawable/warnings"
+    android:title="WARNING SIGNS"
+    android:textSize="20dp"/>
+
+  <item
+    android:id="@+id/ArticlesNavigation"
+    android:icon="@drawable/articles"
+    android:title="HELPFUL TIPS"
     android:textSize="20dp"/>
   
 </menu>
