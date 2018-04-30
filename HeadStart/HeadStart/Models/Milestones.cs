@@ -9,36 +9,15 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 
 namespace HeadStart.Models
 {
     class Milestones
     {
+        [PrimaryKey, AutoIncrement, Column("MilestoneId")]
         public int MilestoneId { get; set; }
-        public string AgeGroup { get; set; }
-        public string Category { get; set; }
+        public int AgeGroup { get; set; }
         public string Milestone { get; set; }
-        public bool IsWarningSign { get; set; }
-
-        public List<Milestones> GetMilestones()
-        {
-            List<Milestones> milestoneList = new List<Milestones>();
-
-            //foreach (var item in db.Milestones)
-            //{
-            //    var milestone = new Milestones
-            //    {
-            //        MilestoneId = item.MilestoneId,
-            //        AgeGroup = item.AgeGroup,
-            //        Category = item.Category,
-            //        Milestone = item.Milestone,
-            //        IsWarningSign = item.IsWarningSign
-            //    };
-
-            //    milestoneList.Add(milestone);
-            //}
-
-            return milestoneList;
-        }
     }
 }

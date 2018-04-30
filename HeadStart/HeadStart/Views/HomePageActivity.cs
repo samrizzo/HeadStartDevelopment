@@ -75,7 +75,7 @@ namespace HeadStart
             return base.OnOptionsItemSelected(item);
         }
 
-        void LoadFragment(int id)
+        void LoadActivity(int id)
         {
             if (id == Resource.Id.MilestonesNavigation)
             {
@@ -95,7 +95,7 @@ namespace HeadStart
 
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
         {
-            LoadFragment(e.Item.ItemId);
+            LoadActivity(e.Item.ItemId);
         }
     }
 }

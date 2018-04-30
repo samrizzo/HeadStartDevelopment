@@ -23,10 +23,6 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             android:layout_width="match_parent">
-            <FrameLayout
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/fragContainer" />
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -44,59 +40,22 @@
                         android:orientation="vertical"
                         android:minWidth="25px"
                         android:minHeight="25px"
-                        android:id="@+id/FirstYearTextContainer"
+                        android:id="@+id/MilestonesDetailsContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <TextView
-                            android:text="The First Year"
+                            android:text="Milestones"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/FirstYearText"
+                            android:id="@+id/MilestoneDetailsText"
                             android:textSize="25dp"
                             android:layout_gravity="center" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:id="@+id/FirstYearContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
                         <ListView
                             android:minWidth="25px"
                             android:minHeight="25px"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/FirstYearList" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:id="@+id/YearOneTextContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <TextView
-                            android:text="1 Year Old"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/YearOldText"
-                            android:textSize="25dp"
-                            android:layout_gravity="center" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:minWidth="25px"
-                        android:minHeight="25px"
-                        android:id="@+id/YearOldContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <ListView
-                            android:minWidth="25px"
-                            android:minHeight="25px"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/YearOldList" />
+                            android:id="@+id/MilestoneDetailsList" />
                     </LinearLayout>
                 </LinearLayout>
                 <android.support.design.widget.BottomNavigationView

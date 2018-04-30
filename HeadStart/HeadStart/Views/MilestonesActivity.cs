@@ -46,7 +46,7 @@ namespace HeadStart.Views
             bottomNavigation.SelectedItemId = Resource.Id.MilestonesNavigation;
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
-            firstYearCategories = new List<string>()
+            List<string> firstYearCategories = new List<string>()
             {
                 "0 - 3 Months",
                 "3 - 6 Months",
@@ -69,6 +69,61 @@ namespace HeadStart.Views
             yearOneListView = FindViewById<ListView>(Resource.Id.YearOldList);
             ArrayAdapter<string> yearOneAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, oneYearCategories);
             yearOneListView.Adapter = yearOneAdapter;
+
+            firstYearListView.ItemClick += FirstYear_ItemClick;
+            yearOneListView.ItemClick += YearOne_ItemClick;
+        }
+
+        void FirstYear_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            //Get our item from the list adapter
+            if (firstYearListView.Count > 0)
+            {
+                var item = this.firstYearListView.GetItemAtPosition(e.Position);
+                var milestoneDetailsActivity = new Intent(this, typeof(MilestoneDetailsActivity));
+
+                // Pass the correct age group to the milestone details activity
+                if (item.ToString() == "0 - 3 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 3);
+                }
+                else if (item.ToString() == "3 - 6 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 6);
+                }
+                else if (item.ToString() == "6 - 9 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 9);
+                }
+                else if (item.ToString() == "9 - 12 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 12);
+                }
+
+                StartActivity(milestoneDetailsActivity);
+            }         
+        }
+
+        void YearOne_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            if (yearOneListView.Count > 0)
+            {
+                //Get our item from the list adapter
+                var item = this.yearOneListView.GetItemAtPosition(e.Position);
+                var milestoneDetailsActivity = new Intent(this, typeof(MilestoneDetailsActivity));
+
+                // Pass the correct age group to the milestone details activity
+                if (item.ToString() == "12 - 18 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 18);
+                }
+                else if (item.ToString() == "18 - 24 Months")
+                {
+                    milestoneDetailsActivity.PutExtra("AgeGroup", 24);
+                }
+
+                StartActivity(milestoneDetailsActivity);
+            }           
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
