@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
@@ -28,6 +29,13 @@ namespace HeadStart.Views
 
             SetSupportActionBar(toolbar);
             SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            // Get the bottom navigation
+            var bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.BottomNavigation);
+
+            // Add the navigation click events for the bottom navigation
+            bottomNavigation.SelectedItemId = Resource.Id.MilestonesNavigation;
+            bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
             int ageGroup = Intent.GetIntExtra("AgeGroup", 0);
 
@@ -56,6 +64,29 @@ namespace HeadStart.Views
             }
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        void LoadFragment(int id)
+        {
+            if (id == Resource.Id.HomeNavigation)
+            {
+                StartActivity(typeof(HomePageActivity));
+            }
+
+            else if (id == Resource.Id.WarningsNavigation)
+            {
+                StartActivity(typeof(WarningSignsActivity));
+            }
+
+            else if (id == Resource.Id.ArticlesNavigation)
+            {
+                StartActivity(typeof(ArticlesActivity));
+            }
+        }
+
+        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            LoadFragment(e.Item.ItemId);
         }
     }
 }
